@@ -9,9 +9,11 @@ agents:
     - colm.oconnor@pipedrive.com
 
 budget: hal
-guardrails: xyz
 customer facing: yes
-rate limits: experimental level
-gateway: ai-proxy-service
-models:
-- openai-5.1
+
+gateway:
+  ai-proxy-service:
+    models:
+    - openai-5.1
+    guardrails: xyz
+    rate limits: experimental level

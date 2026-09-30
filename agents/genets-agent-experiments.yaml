@@ -21,9 +21,10 @@ a2a:
   url: https://genets-agents.pipedrive.com/.well-known/agent.json
   provider: genets-experiments # to filter out which agents apply to this profile
 
-guardrails: xyz
-gateway: litellm
+gateway:
+  type: litellm
+  guardrails: xyz
+  models available: all
 customer facing: yes
 rate limits: experimental
-models available: all
 budget: genet

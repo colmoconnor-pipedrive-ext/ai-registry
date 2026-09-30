@@ -1,0 +1,15 @@
+agents:
+  finai:
+    descriptions: |
+      FinAI provides customer support.
+    framework: none
+    production status: in production
+    slack: finai
+    maintainers:
+    - colm.oconnor@pipedrive.com
+
+
+gateway:
+  none: Uses external customer software.
+customer facing: yes
+budget: marketing
