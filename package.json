@@ -1,0 +1,14 @@
+{
+  "name": "agent-validator",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@stoplight/spectral-core": "^1.18.3",
+    "@stoplight/spectral-functions": "^1.7.2",
+    "@stoplight/spectral-parsers": "^1.0.3"
+  }
+}
