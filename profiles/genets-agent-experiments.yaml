@@ -25,6 +25,6 @@ gateway:
   type: litellm
   guardrails: xyz
   models available: all
-customer facing: yes
+customer facing: false
 rate limits: experimental
 budget: genet

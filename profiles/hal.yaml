@@ -9,7 +9,7 @@ agents:
     - colm.oconnor@pipedrive.com
 
 budget: hal
-customer facing: yes
+customer facing: false
 
 gateway:
   ai-proxy-service:

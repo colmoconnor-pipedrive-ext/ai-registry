@@ -1,12 +1,151 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent and Gateway Configuration Schema",
   "type": "object",
-  "required": ["id", "name", "role", "active"],
+  "required": [
+    "customer facing",
+    "budget",
+    "gateway"
+  ],
+  "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
-    "name": { "type": "string" },
-    "role": { "type": "string" },
-    "active": { "type": "boolean" }
-  },
-  "additionalProperties": false
+    "agents": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "descriptions",
+          "framework",
+          "production status",
+          "slack",
+          "maintainers"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "descriptions": {
+            "type": "string"
+          },
+          "framework": {
+            "type": "string"
+          },
+          "production status": {
+            "type": "string"
+          },
+          "slack": {
+            "type": "string"
+          },
+          "maintainers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "email"
+            }
+          }
+        }
+      }
+    },
+    "a2a": {
+      "type": "object",
+      "required": [
+        "url",
+        "provider"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "provider": {
+          "type": "string"
+        }
+      }
+    },
+    "customer facing": {
+      "type": "boolean"
+    },
+    "budget": {
+      "type": "string"
+    },
+    "rate limits": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "gateway": {
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "Direct single-gateway configuration",
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "guardrails": {
+              "type": "string"
+            },
+            "models available": {
+              "type": "string"
+            },
+            "rate limits": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "description": "Named map of gateway services",
+          "propertyNames": {
+            "not": {
+              "const": "type"
+            }
+          },
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "External software description"
+              },
+              {
+                "type": "object",
+                "description": "Service-specific gateway settings",
+                "required": [
+                  "models"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "models": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "guardrails": {
+                    "type": "string"
+                  },
+                  "rate limits": {
+                    "type": [
+                      "integer",
+                      "string"
+                    ]
+                  },
+                  "models available": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
 }

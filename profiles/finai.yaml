@@ -11,5 +11,5 @@ agents:
 
 gateway:
   none: Uses external customer software.
-customer facing: yes
+customer facing: false
 budget: marketing

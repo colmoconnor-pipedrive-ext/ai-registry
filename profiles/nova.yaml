@@ -20,10 +20,11 @@ agents:
     - colm.oconnor@pipedrive.com
 
 budget: nova
-guardrails: xyz
-rate limits:
-  per second: 400
-customer facing: yes
-gateway: ai-proxy-service
-models:
-- openai-5.1
+customer facing: true
+
+gateway:
+  ai-proxy-service:
+    models:
+    - openai-5.1
+    guardrails: xyz
+    rate limits: 400

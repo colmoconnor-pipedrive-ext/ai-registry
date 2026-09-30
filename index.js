@@ -1,9 +1,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Spectral, Document } from '@stoplight/spectral-core';
-import { Yaml } from '@stoplight/spectral-parsers';
-import schemaFunction from '@stoplight/spectral-functions/schema';
+import spectralCore from '@stoplight/spectral-core';
+import spectralParsers from '@stoplight/spectral-parsers';
+import { schema } from '@stoplight/spectral-functions';
+
+const { Spectral, Document } = spectralCore;
+const { Yaml } = spectralParsers;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,7 +24,7 @@ async function validateAgents() {
                 severity: 'error',
                 given: '$',
                 then: {
-                    function: schemaFunction,
+                    function: schema,
                     functionOptions: {
                         schema: agentSchema,
                     },
@@ -30,7 +33,7 @@ async function validateAgents() {
         },
     });
 
-    const agentsDir = path.join(__dirname, 'agents');
+    const agentsDir = path.join(__dirname, 'profiles');
     const files = (await fs.readdir(agentsDir)).filter(file => file.endsWith('.yaml') || file.endsWith('.yml'));
 
     console.log(`Found ${files.length} YAML files in agents/\n`);
