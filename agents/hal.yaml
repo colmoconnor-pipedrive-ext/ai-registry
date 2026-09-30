@@ -1,0 +1,17 @@
+agents:
+  hal-ai-proxy:
+    descriptions: |
+      Can figure out anything from
+    framework: none
+    production status: in production
+    slack: nova
+    maintainers:
+    - colm.oconnor@pipedrive.com
+
+budget: nova
+guardrails: xyz
+customer facing: yes
+rate limits: experimental
+gateway: ai-proxy-service
+models:
+- openai-5.1

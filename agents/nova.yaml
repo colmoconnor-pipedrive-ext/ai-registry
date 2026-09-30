@@ -1,0 +1,29 @@
+agents:
+  nova-entity-brief:
+    descriptions: |
+      Nova entity brief provides a brief to
+      new customers.
+    framework: none
+    production status: in production
+    slack: nova
+    maintainers:
+    - colm.oconnor@pipedrive.com
+
+  nova-org-brief:
+    descriptions: |
+      Nova entity brief provides an organisation to
+      new customers.
+    framework: none
+    production status: in production
+    slack: nova
+    maintainers:
+    - colm.oconnor@pipedrive.com
+
+budget: nova
+guardrails: xyz
+rate limits:
+  per second: 400
+customer facing: yes
+gateway: ai-proxy-service
+models:
+- openai-5.1
