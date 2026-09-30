@@ -26,5 +26,6 @@ gateway:
   ai-proxy-service:
     models:
     - openai-5.1
+    - claude
     guardrails: xyz
     rate limits: 400
