@@ -33,7 +33,7 @@ async function validateAgents() {
         },
     });
 
-    const agentsDir = path.join(__dirname, 'profiles');
+    const agentsDir = path.join(__dirname, 'applications');
     const files = (await fs.readdir(agentsDir)).filter(file => file.endsWith('.yaml') || file.endsWith('.yml'));
 
     console.log(`Found ${files.length} YAML files in agents/\n`);
