@@ -13,3 +13,4 @@ gateway:
   none: Uses external customer software.
 customer facing: false
 budget: marketing
+langfuse application: none
