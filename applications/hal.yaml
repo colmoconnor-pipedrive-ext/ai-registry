@@ -17,3 +17,5 @@ gateway:
     - openai-5.1
     guardrails: xyz
     rate limits: experimental level
+
+langfuse application: hal

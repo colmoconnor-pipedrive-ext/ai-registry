@@ -29,3 +29,5 @@ gateway:
     - claude
     guardrails: xyz
     rate limits: 400
+
+langfuse application: nova

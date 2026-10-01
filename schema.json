@@ -73,6 +73,9 @@
         "integer"
       ]
     },
+    "langfuse application": {
+      "type": ["string"]
+    },
     "gateway": {
       "oneOf": [
         {

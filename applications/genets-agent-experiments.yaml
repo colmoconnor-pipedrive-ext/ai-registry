@@ -1,30 +1,40 @@
 a2a:
   # A2A agent cards can have custom metadata via extensions which provide slack channels, etc.
-
-  #
-  # {
-  # "name": "Customer Support Agent",
-  # "version": "1.2.0",
-  #   "capabilities": {
-  #    "streaming": true,
-  #    "extensions": {
-  #      "deployment": {
-  #       "environment": "production",
-  #       "status": "active"
-  #      }
-  #    }
-  #   }
-  #  }
-  #
-  #
-
   url: https://genets-agents.pipedrive.com/.well-known/agent.json
   provider: genets-experiments # to filter out which agents apply to this profile
 
+environments:
+- production
+- test
+
 gateway:
-  type: litellm
-  guardrails: xyz
-  models available: all
+  litellm:
+    guardrails: xyz
+    permitted models:
+    - gpt-4o
+
+    budget:
+      max: 100
+      soft: 50
+      per: monthly
+
+    guardrails:
+    - bedrock-guardrail
+
+    rate limits:
+      tpm: 5000
+      rpm: 50
+      max_parallel_requests: 5
+
+
+  # exclude:
+  # - duration of key
+  # - model aliases
+  # - excluded models
+  # - enforce params
+  # - per model tpm / rpm limits
+
+
 customer facing: false
 rate limits: experimental
 budget: genet
